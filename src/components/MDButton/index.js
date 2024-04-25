@@ -25,12 +25,13 @@ import MDButtonRoot from "components/MDButton/MDButtonRoot";
 import { useMaterialUIController } from "context";
 
 const MDButton = forwardRef(
-  ({ color, variant, size, circular, iconOnly, children, ...rest }, ref) => {
+  ({ color, variant, size, circular, iconOnly, onClick, children, ...rest }, ref) => {
     const [controller] = useMaterialUIController();
     const { darkMode } = controller;
 
     return (
       <MDButtonRoot
+        onClick={onClick}
         {...rest}
         ref={ref}
         color="primary"
@@ -71,6 +72,7 @@ MDButton.propTypes = {
   circular: PropTypes.bool,
   iconOnly: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default MDButton;
