@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { SortableItem } from "../SortableItem";
 import PropTypes from "prop-types";
 import NewQuestion from "examples/Question/newQuestion";
+import { Grid } from "@mui/material";
+import MDBox from "components/MDBox";
 
 export const SortableList = ({ items, Edit }) => {
   const [cards, setCards] = useState(items);
@@ -17,27 +19,33 @@ export const SortableList = ({ items, Edit }) => {
   };
 
   return (
-    <div>
+    <Grid container spacing={2} display="flex">
       {cards.map((card, index) =>
         !card.edit ? (
-          <SortableItem
-            Edit={(index) => Edit(index)}
-            key={index}
-            data={card}
-            index={index}
-            moveCard={moveCard}
-          />
+          <Grid item key={index} xs={12} md={6} lg={4}>
+            <MDBox mb={3}>
+              <SortableItem
+                Edit={(index) => Edit(index)}
+                data={card}
+                index={index}
+                moveCard={moveCard}
+              />
+            </MDBox>
+          </Grid>
         ) : (
-          <NewQuestion
-            key={index}
-            index={index}
-            data={card}
-            AddNewQuestion={(index, data) => Edit(index, data)}
-            Edit={(index, data) => Edit(index, data, "clear")}
-          />
+          <Grid item key={index} xs={12} md={6} lg={4}>
+            <MDBox mb={3}>
+              <NewQuestion
+                data={card}
+                index={index}
+                AddNewQuestion={(index, data) => Edit(index, data)}
+                Edit={(index, data) => Edit(index, data, "clear")}
+              />
+            </MDBox>
+          </Grid>
         )
       )}
-    </div>
+    </Grid>
   );
 };
 

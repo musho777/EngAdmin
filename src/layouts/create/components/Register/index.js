@@ -8,6 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { SortableList } from "../SortableList/index";
 import MDSnackbar from "components/MDSnackbar";
 import AddIcon from "@mui/icons-material/Add";
+import MDBox from "components/MDBox";
 
 function Register() {
   const [error, setError] = useState("");
@@ -92,12 +93,14 @@ function Register() {
       </DndProvider>
       <Grid container spacing={3}>
         {add && (
-          <Grid item md={6}>
-            <NewQuestion
-              Edit={() => setAdd(false)}
-              index={data.length}
-              AddNewQuestion={(index, data) => AddNewQuestion(data)}
-            />
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={3}>
+              <NewQuestion
+                Edit={() => setAdd(false)}
+                index={data.length}
+                AddNewQuestion={(index, data) => AddNewQuestion(data)}
+              />
+            </MDBox>
           </Grid>
         )}
       </Grid>
