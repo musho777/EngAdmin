@@ -77,7 +77,8 @@ function NewQuestion({ data, Edit, index, AddNewQuestion }) {
           <CardMedia
             controls
             component={newData.fileType == "video" ? "video" : "img"}
-            height={newData.img ? 240 : 30}
+            width="100%"
+            height={newData.img ? 200 : 30}
             src={newData.img}
           />
         </MDBox>

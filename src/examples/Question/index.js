@@ -16,12 +16,12 @@ function Question({ data, Edit, index }) {
           <CardMedia
             controls
             component={data.fileType == "video" ? "video" : "img"}
-            height={data.img ? 240 : 0}
+            height={data.img ? 200 : 0}
             src={data.img}
           />
         </MDBox>
       )}
-      <Grid mt={5} p={2}>
+      <Grid mt={2} p={2}>
         <Grid display="flex" justifyContent="space-between">
           <MDTypography style={{ height: 30 }} fontSize={14} color="dark">
             {data.question}
